@@ -427,9 +427,11 @@ document.getElementById("priceForm").addEventListener("submit", function(event) 
         const priceResults = document.getElementById("priceResults");
 
         if (data.prices && data.prices.length > 0) {
-            let html = `<h2>Market Prices</h2><table class="table">`;
-            html += `<tr><th>District</th><th>Market</th><th>Commodity</th><th>Variety</th><th>Max Price</th><th>Avg Price</th><th>Min Price</th></tr>`;
-
+        let html = `<h2>Market Prices</h2>
+        <div class="table-responsive">
+        <table class="table">`;
+        html += `<tr><th>District</th><th>Market</th><th>Commodity</th><th>Variety</th><th>Max Price</th><th>Avg Price</th><th>Min Price</th></tr>`;
+        
             data.prices.forEach(price => {
                 html += `
                     <tr>
@@ -444,7 +446,7 @@ document.getElementById("priceForm").addEventListener("submit", function(event) 
                 `;
             });
 
-            html += `</table>`;
+            html += `</table></div>`;
             priceResults.innerHTML = html;
         } else {
             priceResults.innerHTML = `<p>${data.message}</p>`;
